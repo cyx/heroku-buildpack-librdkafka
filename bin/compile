@@ -47,6 +47,10 @@ fi
 make
 make install
 
+echo "==============================================================="
+tree $VENDOR_RUN_DIR
+echo "==============================================================="
+
 mkdir -p $(dirname $PROFILE_PATH)
 cat > $PROFILE_PATH <<EOF
 export C_INCLUDE_PATH=$VENDOR_RUN_DIR/include:\$C_INCLUDE_PATH
