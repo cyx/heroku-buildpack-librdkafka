@@ -31,7 +31,7 @@ cd $CACHE_DIR
 # download if needed, dir won't exist in cache if checksum wasn't previously verified
 if [ ! -e $LIBRDKAFKA_DIST ];then
     # download
-    curl -Lo ${LIBRDKAFKA_DIST_GZ} https://github.com/edenhill/librdkafka/archive/${LIBRDKAFKA_VERSION}.tar.gz
+    curl -Lo ${LIBRDKAFKA_DIST_GZ} https://github.com/edenhill/librdkafka/archive/v${LIBRDKAFKA_VERSION}.tar.gz
 
     # extract
     tar zxf $LIBRDKAFKA_DIST_GZ
