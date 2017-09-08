@@ -47,15 +47,12 @@ fi
 make
 make install
 
-echo "==============================================================="
-find $CACHE_DIR -name rdkafka.pc
-echo "==============================================================="
+export PKG_CONFIG_PATH=$CACHE_DIR/$LIBRDKAFKA_DIR/src
 
 mkdir -p $(dirname $PROFILE_PATH)
 cat > $PROFILE_PATH <<EOF
 export C_INCLUDE_PATH=$VENDOR_RUN_DIR/include:\$C_INCLUDE_PATH
 export LIBRARY_PATH=$VENDOR_RUN_DIR/lib:\$LIBRARY_PATH
 export LD_LIBRARY_PATH=$VENDOR_RUN_DIR/lib:\$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$CACHE_DIR/$LIBRDKAFKA_DIR/src
 EOF
 chmod 755 $PROFILE_PATH
