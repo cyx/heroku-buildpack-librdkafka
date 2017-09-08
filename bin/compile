@@ -48,7 +48,7 @@ make
 make install
 
 echo "==============================================================="
-tree $VENDOR_RUN_DIR
+find $VENDOR_RUN_DIR -name rdkafka.pc
 echo "==============================================================="
 
 mkdir -p $(dirname $PROFILE_PATH)
