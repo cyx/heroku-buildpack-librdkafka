@@ -13,6 +13,7 @@ LIBRDKAFKA_DIST_GZ=${LIBRDKAFKA_DIST}.tar.gz
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+ENV_DIR=$3
 
 # rely on heroku-buildpack-python to find our libs
 # # https://github.com/heroku/heroku-buildpack-python/blob/0b8741916676f70eb6537aa8da402fbdbe5292c7/bin/compile#L117
@@ -47,7 +48,7 @@ fi
 make
 make install
 
-export PKG_CONFIG_PATH=$CACHE_DIR/$LIBRDKAFKA_DIR/src
+echo "${CACHE_DIR}/$LIBRDKAFKA_DIR/src" > $ENV_DIR/PKG_CONFIG_PATH
 
 mkdir -p $(dirname $PROFILE_PATH)
 cat > $PROFILE_PATH <<EOF
