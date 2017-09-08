@@ -28,20 +28,10 @@ fi
 mkdir -p $CACHE_DIR
 cd $CACHE_DIR
 
-# remove old, pre-installed librdkafka during this build, it'll be there again once slug is deployed
-if [ -z "${KEEP_LIBRDKAFKA_DPKG}" ]; then
-   set +e
-   apt-get remove -y librdkafka-dev librdkafka1
-   set -e
-fi
-
 # download if needed, dir won't exist in cache if checksum wasn't previously verified
 if [ ! -e $LIBRDKAFKA_DIST ];then
     # download
     curl -Lo ${LIBRDKAFKA_DIST_GZ} https://github.com/edenhill/librdkafka/archive/${LIBRDKAFKA_VERSION}.tar.gz
-
-    # verify
-    echo "${LIBRDKAFKA_SHASUM256}  ${LIBRDKAFKA_DIST_GZ}" | shasum -c -
 
     # extract
     tar zxf $LIBRDKAFKA_DIST_GZ
